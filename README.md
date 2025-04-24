@@ -16,6 +16,7 @@ The clients' models are aggregated with either FedAvg or FlexLoRA strategy.
 Project dependencies are defined in `pyproject.toml`. Install them in an activated Python environment with:
 
 ```shell
+cd flower-medical
 pip install -e .
 ```
 
@@ -23,7 +24,14 @@ pip install -e .
 
 The dataset is divided into 20 partitions in an IID fashion, a partition is assigned to each ClientApp.
 We randomly sample a fraction (0.1) of the total nodes to participate in each round, for a total of `10` rounds.
-All settings are defined in `pyproject.toml`. To run experiments with flexlora, set `use_flexlora` to `1`.
+To run the challenge, use the following command:
+```shell
+flwr run
+```
+All settings are defined in `pyproject.toml`. To run experiments with flexlora, set `use_flexlora` to `1` through:
+```shell
+flwr run --run-config "use_flexlora=1
+```
 
 ## Evaluation Result
 
@@ -33,6 +41,7 @@ All settings are defined in `pyproject.toml`. To run experiments with flexlora, 
 |  FedAvg  | 55.36  |  60.93  | 65.82 |   70.4   |  63.12  |
 | FlexLoRA | 54.31  |  59.29  | 59.23 |   70.2   |  60.75  |
 
+All experiments are conducted using 2 A5000(20GB memory) GPUs.
 
 ## Model saving
 
